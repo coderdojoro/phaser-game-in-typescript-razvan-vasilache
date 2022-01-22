@@ -27,12 +27,31 @@ export default class Hero extends Phaser.GameObjects.Sprite {
             frameRate: 10,
             repeat: -1
         });
+        this.anims.create({
+            key: 'walk-e-anim',
+            frames: this.anims.generateFrameNumbers('walk-e-spritesheet', {}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'walk-s-anim',
+            frames: this.anims.generateFrameNumbers('walk-s-spritesheet', {}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'idle-s-anim',
+            frames: this.anims.generateFrameNumbers('idle-s-spritesheet', {}),
+            frameRate: 10,
+            repeat: -1
+        });
 
         this.rightKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.leftKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.downKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
-        this.anims.play('idle-e-anim'); //this.setScal(1,5);
+        this.anims.play('idle-e-anim', true); 
+		//this.setScal(1,5);
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
