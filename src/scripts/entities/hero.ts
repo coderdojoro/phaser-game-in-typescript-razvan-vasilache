@@ -14,6 +14,8 @@ export default class Hero extends Phaser.GameObjects.Sprite {
     rightKey: Phaser.Input.Keyboard.Key;
     leftKey: Phaser.Input.Keyboard.Key;
     downKey: Phaser.Input.Keyboard.Key;
+    upKey: Phaser.Input.Keyboard.Key;
+
     heroState: HeroState = HeroState.IDLE;
     heroPosition: HeroPosition = HeroPosition.EAST;
 
@@ -49,6 +51,8 @@ export default class Hero extends Phaser.GameObjects.Sprite {
         this.rightKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.leftKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.downKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.upKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+
 
         this.anims.play('idle-e-anim', true); 
 		//this.setScal(1,5);
@@ -75,6 +79,12 @@ export default class Hero extends Phaser.GameObjects.Sprite {
             this.heroState = HeroState.WALK;
             this.heroPosition = HeroPosition.SOUTH;
         }
+        if (this.upKey.isDown) {
+            (this.body as Phaser.Physics.Arcade.Body).setVelocityY(-175);
+            this.heroState = HeroState.WALK;
+            this.heroPosition = HeroPosition.NORTH;
+        }
+
 
         if (this.downKey.isUp && this.leftKey.isUp && this.rightKey.isUp) {
             this.heroState = HeroState.IDLE;
