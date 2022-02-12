@@ -23,6 +23,10 @@ export default class Hero extends Phaser.GameObjects.Sprite {
         super(scene, x, y, 'idle-e-spritesheet', 0);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
+
+        (this.body as Phaser.Physics.Arcade.Body).setSize(15, 35);
+        (this.body as Phaser.Physics.Arcade.Body).setOffset(57, 49);
+
         this.anims.create({
             key: 'idle-e-anim',
             frames: this.anims.generateFrameNumbers('idle-e-spritesheet', {}),
@@ -65,7 +69,7 @@ export default class Hero extends Phaser.GameObjects.Sprite {
         this.upKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
         this.anims.play('idle-e-anim', true);
-        this.setScale(2.5);
+        //this.setScale(2.5);
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
