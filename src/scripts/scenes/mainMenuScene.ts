@@ -14,9 +14,6 @@ export default class MainMenuScene extends Phaser.Scene {
         this.load.spritesheet('idle-s-spritesheet', 'assets/hero/idle_aggro_S.png', { frameWidth: 128, frameHeight: 128 });
         this.load.spritesheet('idle-n-spritesheet', 'assets/hero/idle_aggro_N.png', { frameWidth: 128, frameHeight: 128 });
         this.load.spritesheet('walk-n-spritesheet', 'assets/hero/walk_aggro_N.png', { frameWidth: 128, frameHeight: 128 });
-
-
-
     }
     create() {
         // remove the loading screen
@@ -34,11 +31,8 @@ export default class MainMenuScene extends Phaser.Scene {
 
         this.cameras.main.fadeIn(2000);
         this.cameras.main.setBackgroundColor('#008080');
-        
 
         this.hero = new Hero(this, 200, 200);
-       
-      
     }
 
     update(time, delta) {}
