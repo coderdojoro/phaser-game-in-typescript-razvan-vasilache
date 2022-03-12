@@ -37,12 +37,13 @@ export default class MainMenuScene extends Phaser.Scene {
         let map = this.make.tilemap({ key: 'map' });
         let tileset = map.addTilesetImage('ground', 'tiles', 32, 32, 1, 2);
 
-        let belowLayer = map.createLayer('below hero', tileset, 0, 0);
-        let worldlayer = map.createLayer('world', tileset, 0, 0);
-        let abovelayer = map.createLayer('above hero', tileset, 0, 0);
+        let belowLayer = map.createLayer('Below hero', tileset, 0, 0);
+        let objBelowLayer = map.createLayer('Objects below hero', tileset, 0, 0);
+        let worldlayer = map.createLayer('World', tileset, 0, 0);
+        let abovelayer = map.createLayer('Above hero', tileset, 0, 0);
         worldlayer.setCollisionBetween(tileset.firstgid, tileset.firstgid + tileset.total, true);
 
-        let spawnPoint = map.findObject('objects', (obj) => obj.name == 'hero spawn');
+        let spawnPoint = map.findObject('Objects', (obj) => obj.name == 'Spawn Point');
 
         this.hero = new Hero(this, spawnPoint.x, spawnPoint.y);
 
