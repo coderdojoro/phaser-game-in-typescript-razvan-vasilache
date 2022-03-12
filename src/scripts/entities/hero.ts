@@ -26,6 +26,7 @@ export default class Hero extends Phaser.GameObjects.Sprite {
 
         (this.body as Phaser.Physics.Arcade.Body).setSize(15, 35);
         (this.body as Phaser.Physics.Arcade.Body).setOffset(57, 49);
+        (this.body as Phaser.Physics.Arcade.Body).setCollideWorldBounds(true);
 
         this.anims.create({
             key: 'idle-e-anim',
