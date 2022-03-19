@@ -3,6 +3,7 @@ import Hero from '../entities/hero';
 
 export default class MainMenuScene extends Phaser.Scene {
     hero: Hero;
+    worldlayer: Phaser.Tilemaps.TilemapLayer;
     constructor() {
         super({ key: 'MainMenuScene' });
     }
@@ -47,9 +48,9 @@ export default class MainMenuScene extends Phaser.Scene {
 
         let belowLayer = map.createLayer('Below hero', tileset, 0, 0);
         let objBelowLayer = map.createLayer('Objects below hero', tileset, 0, 0);
-        let worldlayer = map.createLayer('World', tileset, 0, 0);
+        this.worldlayer = map.createLayer('World', tileset, 0, 0);
         let abovelayer = map.createLayer('Above hero', tileset, 0, 0);
-        worldlayer.setCollisionBetween(tileset.firstgid, tileset.firstgid + tileset.total, true);
+        this.worldlayer.setCollisionBetween(tileset.firstgid, tileset.firstgid + tileset.total, true);
 
         let spawnPoint = map.findObject('Objects', (obj) => obj.name == 'Spawn Point');
 
@@ -58,7 +59,7 @@ export default class MainMenuScene extends Phaser.Scene {
         abovelayer.setDepth(100);
         this.hero.setDepth(50);
 
-        this.physics.add.collider(this.hero, worldlayer);
+        this.physics.add.collider(this.hero, this.worldlayer);
         this.cameras.main.startFollow(this.hero);
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
