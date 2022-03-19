@@ -98,7 +98,7 @@ export default class Hero extends Phaser.GameObjects.Sprite {
         console.log('atk: ' + this.atkKey.isDown);
         if (this.atkKey.isDown) {
             let cardinalPosition = HeroPosition[this.heroPosition].charAt(0).toLowerCase();
-            if(cardinalPosition == 'w'){
+            if (cardinalPosition == 'w') {
                 cardinalPosition = 'e';
             }
             this.anims.play('atk-' + cardinalPosition + '-anim');
