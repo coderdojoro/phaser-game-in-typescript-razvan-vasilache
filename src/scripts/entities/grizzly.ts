@@ -1,7 +1,7 @@
 import 'phaser';
 import * as EasyStar from 'easystarjs';
 import MainMenuScene from '../scenes/mainMenuScene';
-export default class Hero extends Phaser.GameObjects.Sprite {
+export default class Grizzly extends Phaser.GameObjects.Sprite {
     easystar: EasyStar.js;
     scene:MainMenuScene;
     constructor(scene, x, y) {
@@ -25,5 +25,15 @@ export default class Hero extends Phaser.GameObjects.Sprite {
         this.easystar.setAcceptableTiles(-1);
         this.easystar.enableDiagonals();
         this.easystar.enableCornerCutting();
+
+        
+    }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        let distance = Phaser.Math.Distance.Between(this.x, this.y, this.scene.hero.x, this.scene.hero.y);
+        if(distance<300){
+            console.log("moving");
+        }
     }
 }
+
